@@ -1,0 +1,10 @@
+{
+  "name": "TUF Quiz Management System",
+  "short_name": "Quiz System",
+  "description": "Cloud-native online quiz management platform.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdfcf8",
+  "theme_color": "#2563eb",
+  "icons": []
+}
