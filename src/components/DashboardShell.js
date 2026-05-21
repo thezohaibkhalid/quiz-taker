@@ -59,7 +59,7 @@ export default function DashboardShell({ children, role }) {
       {/* Mobile top bar */}
       <div className="md:hidden flex items-center justify-between p-4 border-b border-ink-100 bg-white">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-600 to-accent-500 flex items-center justify-center text-white font-bold">Q</div>
+          <div className="w-8 h-8 rounded-lg bg-ink-900 flex items-center justify-center text-white font-bold">Q</div>
           <span className="font-semibold">Quiz System</span>
         </Link>
         <div className="flex items-center gap-2">
@@ -141,7 +141,7 @@ function SidebarBody({ user, nav, pathname, roleColor, onLogout, onClickItem }) 
     <>
       <div className="p-5 border-b border-ink-100">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-600 to-accent-500 flex items-center justify-center text-white font-bold">Q</div>
+          <div className="w-8 h-8 rounded-lg bg-ink-900 flex items-center justify-center text-white font-bold">Q</div>
           <div>
             <p className="font-semibold text-ink-900 text-sm leading-tight">Quiz System</p>
             <p className="text-xs muted capitalize">{user?.role || "—"}</p>
