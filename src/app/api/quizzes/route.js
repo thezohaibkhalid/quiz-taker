@@ -73,7 +73,17 @@ export async function POST(req) {
     if (!title || !duration_minutes || !start_time || !end_time) {
       return NextResponse.json({ ok: false, error: "Missing required fields" }, { status: 400 });
     }
-    if (new Date(end_time) <= new Date(start_time)) {
+
+    // Convert datetime-local times to Date objects, accounting for Pakistan timezone (UTC+5)
+    const startDate = new Date(start_time);
+    const endDate = new Date(end_time);
+
+    // Adjust for Pakistan timezone (UTC+5)
+    // The datetime-local input is in local time, so we subtract 5 hours to get UTC
+    const utcStartTime = new Date(startDate.getTime() - 5 * 60 * 60 * 1000);
+    const utcEndTime = new Date(endDate.getTime() - 5 * 60 * 60 * 1000);
+
+    if (utcEndTime <= utcStartTime) {
       return NextResponse.json({ ok: false, error: "End time must be after start time" }, { status: 400 });
     }
 
@@ -84,8 +94,8 @@ export async function POST(req) {
       created_by: user._id,
       duration_minutes: Number(duration_minutes),
       pass_percentage: pass_percentage ?? 50,
-      start_time: new Date(start_time),
-      end_time: new Date(end_time),
+      start_time: utcStartTime,
+      end_time: utcEndTime,
       allow_single_attempt: allow_single_attempt !== false,
       randomize_questions: !!randomize_questions,
       cover_image_url: cover_image_url || "",
