@@ -83,7 +83,7 @@ export default function ProfilePage() {
         >
           <h2 className="section-title">Personal information</h2>
           <div className="flex items-center gap-4">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-brand-600 to-accent-500 flex items-center justify-center text-white font-bold text-2xl overflow-hidden">
+            <div className="w-20 h-20 rounded-full bg-ink-800 flex items-center justify-center text-white font-bold text-2xl overflow-hidden">
               {avatarUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={avatarUrl} alt="" className="w-full h-full object-cover" />

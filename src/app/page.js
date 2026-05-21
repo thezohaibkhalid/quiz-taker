@@ -33,7 +33,7 @@ function Header() {
     <header className="border-b border-ink-100 bg-cream-50/80 backdrop-blur sticky top-0 z-30">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-600 to-accent-500 flex items-center justify-center text-white font-bold shadow-soft">Q</div>
+          <img src="/logo.png" alt="Logo" className="w-11 h-11 object-contain" />
           <span className="font-semibold text-ink-900">Quiz System</span>
         </Link>
         <nav className="flex items-center gap-2">
@@ -54,8 +54,7 @@ function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.4 }}
       >
-        <div className="absolute top-10 -left-20 w-96 h-96 bg-brand-200 rounded-full blur-3xl opacity-40" />
-        <div className="absolute top-40 right-0 w-96 h-96 bg-accent-200 rounded-full blur-3xl opacity-40" />
+        <div className="absolute top-32 right-0 w-[28rem] h-[28rem] bg-accent-100 rounded-full blur-3xl opacity-30" />
       </motion.div>
 
       <motion.div variants={stagger} initial="hidden" animate="show" className="grid md:grid-cols-2 gap-12 items-center">
@@ -66,8 +65,8 @@ function Hero() {
           </motion.div>
           <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-6xl text-ink-900 leading-[1.05] tracking-tight">
             Run quizzes,<br />
-            <span className="text-brand-600">evaluate instantly</span>,<br />
-            <span className="text-accent-600">announce results.</span>
+            evaluate instantly,<br />
+            <span className="text-accent-600 italic">announce results.</span>
           </motion.h1>
           <motion.p variants={fadeUp} className="mt-6 text-lg text-ink-600 leading-relaxed">
             A complete cloud-based Online Quiz Management System for teachers, students and admins —
@@ -88,7 +87,7 @@ function Hero() {
         </motion.div>
 
         <motion.div variants={scaleIn} className="relative">
-          <div className="absolute -inset-6 bg-gradient-to-tr from-brand-200/50 via-cream-100 to-accent-200/50 rounded-3xl blur-2xl"></div>
+          <div className="absolute -inset-6 bg-accent-100/30 rounded-3xl blur-2xl"></div>
           <QuizMockCard />
         </motion.div>
       </motion.div>
@@ -182,7 +181,7 @@ function DashboardPreview() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="relative"
       >
-        <div className="absolute -inset-10 bg-gradient-to-tr from-brand-100/40 via-transparent to-accent-100/40 rounded-3xl blur-2xl -z-10"></div>
+        <div className="absolute -inset-10 bg-cream-100/50 rounded-3xl blur-2xl -z-10"></div>
         <div className="card shadow-card overflow-hidden p-0">
           {/* fake top bar */}
           <div className="flex items-center justify-between border-b border-ink-100 px-5 py-3 bg-cream-50">
@@ -198,7 +197,7 @@ function DashboardPreview() {
             {/* sidebar */}
             <div className="col-span-3 border-r border-ink-100 p-4 bg-cream-50">
               <div className="flex items-center gap-2 mb-5">
-                <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-600 to-accent-500"></div>
+                <img src="/logo.png" alt="Logo" className="w-9 h-9 object-contain" />
                 <span className="font-semibold text-ink-900 text-sm">Quiz System</span>
               </div>
               {["Dashboard", "My Quizzes", "Submissions", "Analytics", "Subjects"].map((t, i) => (
@@ -340,13 +339,13 @@ function CTA() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="rounded-2xl bg-gradient-to-br from-brand-700 via-brand-600 to-accent-500 text-white p-10 md:p-14 text-center overflow-hidden relative"
+        className="rounded-2xl bg-brand-800 text-white p-10 md:p-14 text-center overflow-hidden relative"
       >
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 30% 20%, white 0%, transparent 35%), radial-gradient(circle at 70% 80%, white 0%, transparent 35%)" }}></div>
         <h2 className="relative font-serif text-4xl md:text-5xl">Ready to run your first quiz?</h2>
         <p className="relative mt-3 text-white/85 max-w-2xl mx-auto">Sign up in seconds — you&apos;ll get a verification email, then you can create or attempt a quiz right away.</p>
         <div className="relative mt-7 flex justify-center gap-3">
-          <Link href="/register" className="bg-white text-brand-700 hover:bg-cream-100 btn px-6 py-3 text-base font-semibold">Create account →</Link>
+          <Link href="/register" className="bg-white text-ink-900 hover:bg-cream-100 btn px-6 py-3 text-base font-semibold">Create account →</Link>
           <Link href="/login" className="bg-white/10 hover:bg-white/20 text-white btn px-6 py-3 text-base border border-white/30">Sign in</Link>
         </div>
       </motion.div>

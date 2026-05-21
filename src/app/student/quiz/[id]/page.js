@@ -234,7 +234,7 @@ export default function QuizAttemptPage() {
         </div>
         <div className="h-1 bg-ink-100">
           <motion.div
-            className="h-full bg-gradient-to-r from-brand-500 to-accent-500"
+            className="h-full bg-accent-500"
             initial={{ width: 0 }}
             animate={{ width: `${total ? ((current + 1) / total) * 100 : 0}%` }}
             transition={{ duration: 0.3 }}
@@ -381,9 +381,9 @@ function ResultScreen({ result, quiz }) {
         <p className="mt-2 text-ink-600">{result?.message}</p>
 
         {announced && pct != null && (
-          <div className="mt-6 p-5 rounded-xl bg-gradient-to-br from-brand-50 to-accent-50 border border-brand-100">
+          <div className="mt-6 p-5 rounded-xl bg-cream-100 border border-accent-200">
             <p className="text-xs muted uppercase tracking-wider">Score</p>
-            <p className="mt-1 text-4xl font-bold text-brand-700">{pct.toFixed(1)}%</p>
+            <p className="mt-1 text-4xl font-bold text-accent-600">{pct.toFixed(1)}%</p>
             <p className={`mt-1 text-sm font-semibold uppercase ${status === "pass" ? "text-emerald-600" : "text-red-600"}`}>{status}</p>
           </div>
         )}

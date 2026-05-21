@@ -36,7 +36,7 @@ export default function AdminUserDetailPage() {
 
       {/* Identity card */}
       <motion.div variants={fadeUp} initial="hidden" animate="show" className="card flex items-center gap-5 mb-6">
-        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-600 to-accent-500 flex items-center justify-center text-white font-bold text-2xl overflow-hidden shrink-0">
+        <div className="w-16 h-16 rounded-full bg-ink-800 flex items-center justify-center text-white font-bold text-2xl overflow-hidden shrink-0">
           {user.avatar_url ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={user.avatar_url} alt="" className="w-full h-full object-cover" />
