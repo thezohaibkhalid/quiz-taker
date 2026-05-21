@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const notificationSchema = new mongoose.Schema(
   {
-    user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true, index: true },
+    user_id: { type: mongoose.Schema.Types.ObjectId, ref: "QtUser", required: true, index: true },
     type: {
       type: String,
       enum: ["invite", "result", "system", "password_reset", "welcome"],
@@ -22,9 +22,9 @@ const notificationSchema = new mongoose.Schema(
       default: "pending",
     },
     sent_at: { type: Date, default: null },
-    related_quiz_id: { type: mongoose.Schema.Types.ObjectId, ref: "Quiz", default: null },
+    related_quiz_id: { type: mongoose.Schema.Types.ObjectId, ref: "QtQuiz", default: null },
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );
 
-export default mongoose.models.Notification || mongoose.model("Notification", notificationSchema);
+export default mongoose.models.QtNotification || mongoose.model("QtNotification", notificationSchema);

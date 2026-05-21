@@ -4,8 +4,8 @@ const quizSchema = new mongoose.Schema(
   {
     title: { type: String, required: true, trim: true },
     description: { type: String, default: "" },
-    subject_id: { type: mongoose.Schema.Types.ObjectId, ref: "Subject" },
-    created_by: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true, index: true },
+    subject_id: { type: mongoose.Schema.Types.ObjectId, ref: "QtSubject" },
+    created_by: { type: mongoose.Schema.Types.ObjectId, ref: "QtUser", required: true, index: true },
     duration_minutes: { type: Number, required: true, min: 1 },
     total_marks: { type: Number, default: 0 },
     pass_percentage: { type: Number, default: 50, min: 0, max: 100 },
@@ -23,7 +23,7 @@ const quizSchema = new mongoose.Schema(
 );
 
 quizSchema.virtual("question_count", {
-  ref: "Question",
+  ref: "QtQuestion",
   localField: "_id",
   foreignField: "quiz_id",
   count: true,
@@ -32,4 +32,4 @@ quizSchema.virtual("question_count", {
 quizSchema.set("toJSON", { virtuals: true });
 quizSchema.set("toObject", { virtuals: true });
 
-export default mongoose.models.Quiz || mongoose.model("Quiz", quizSchema);
+export default mongoose.models.QtQuiz || mongoose.model("QtQuiz", quizSchema);

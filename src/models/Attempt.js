@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const answerSchema = new mongoose.Schema(
   {
-    question_id: { type: mongoose.Schema.Types.ObjectId, ref: "Question", required: true },
+    question_id: { type: mongoose.Schema.Types.ObjectId, ref: "QtQuestion", required: true },
     answer: { type: String, default: "" },
     is_correct: { type: Boolean, default: null },
     awarded_marks: { type: Number, default: 0 },
@@ -12,8 +12,8 @@ const answerSchema = new mongoose.Schema(
 
 const attemptSchema = new mongoose.Schema(
   {
-    student_id: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true, index: true },
-    quiz_id: { type: mongoose.Schema.Types.ObjectId, ref: "Quiz", required: true, index: true },
+    student_id: { type: mongoose.Schema.Types.ObjectId, ref: "QtUser", required: true, index: true },
+    quiz_id: { type: mongoose.Schema.Types.ObjectId, ref: "QtQuiz", required: true, index: true },
     answers: { type: [answerSchema], default: [] },
     draft_answers: { type: Map, of: String, default: {} },
     started_at: { type: Date, default: Date.now },
@@ -29,4 +29,4 @@ const attemptSchema = new mongoose.Schema(
 
 attemptSchema.index({ student_id: 1, quiz_id: 1 }, { unique: false });
 
-export default mongoose.models.Attempt || mongoose.model("Attempt", attemptSchema);
+export default mongoose.models.QtAttempt || mongoose.model("QtAttempt", attemptSchema);

@@ -126,21 +126,22 @@ Staging deployment is fully automated via **GitHub Actions** and runs only on th
 sudo apt update && sudo apt install -y docker.io docker-compose-plugin git
 sudo mkdir -p /opt/quiz-system && sudo chown $USER /opt/quiz-system
 cd /opt/quiz-system
-git clone https://github.com/your-org/quiz-system.git .
-git checkout staging
-cp .env.staging.example .env.staging
-nano .env.staging   # fill in real values
+git clone https://github.com/thezohaibkhalid/quiz-taker.git .
+git checkout -b staging
 ```
+
+You do **not** need to create `.env.staging` on the VM — the pipeline writes it on every deploy from the `STAGING_ENV_BLOB` secret (see below).
 
 ### GitHub repo secrets to configure
 
-| Secret                | Description                                        |
-|-----------------------|----------------------------------------------------|
-| `STAGING_HOST`        | Staging server IP or DNS                           |
-| `STAGING_USER`        | SSH user (e.g. `ubuntu`)                           |
-| `STAGING_SSH_KEY`     | Private key (PEM) for SSH                          |
-| `STAGING_SSH_PORT`    | Optional, defaults to 22                           |
-| `STAGING_APP_URL`     | Public URL (e.g. `https://staging.quiz.example.com`)|
+| Secret                | Description                                                                 |
+|-----------------------|-----------------------------------------------------------------------------|
+| `STAGING_HOST`        | Staging server IP or DNS                                                    |
+| `STAGING_USER`        | SSH user (e.g. `ubuntu`)                                                    |
+| `STAGING_SSH_KEY`     | Private key (PEM) for SSH                                                   |
+| `STAGING_SSH_PORT`    | Optional, defaults to 22                                                    |
+| `STAGING_APP_URL`     | Public URL (e.g. `http://<vm-ip>:3000`)                                     |
+| `STAGING_ENV_BLOB`    | Full contents of `.env.staging` pasted as one multi-line secret value       |
 
 ### Pipeline behavior
 
@@ -149,7 +150,7 @@ Pushing to the `staging` branch (or manual `workflow_dispatch`) will:
 1. **Build** — install, lint, `next build` (fails fast on errors).
 2. **Image** — build Docker image with `Dockerfile` (multi-stage, non-root).
 3. **Push** — push to GitHub Container Registry as `ghcr.io/<repo>:staging-<sha>` and `:staging`.
-4. **Deploy** — SSH into staging host → `git pull` → `docker compose pull && up -d`.
+4. **Deploy** — SSH into staging host → `git pull` → write `.env.staging` from `STAGING_ENV_BLOB` → `docker compose pull && up -d`.
 5. **Health check** — `curl /api/health` with up to 5 retries; rolls back on failure.
 
 See `.github/workflows/deploy-staging.yml`.
@@ -188,8 +189,6 @@ See `.github/workflows/deploy-staging.yml`.
 Built for the Cloud Computing course project at **The University of Faisalabad** by:
 
 - Zohaib Khalid — 2022-BS-SE-108
-- Syed Hussain Ali Naqvi — 2022-BS-SE-084
-- Abdullah Adees — 2022-BS-SE-124
 
 Submitted to Sir Ibrar.
 # quiz-taker

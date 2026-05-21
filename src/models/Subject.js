@@ -5,9 +5,9 @@ const subjectSchema = new mongoose.Schema(
     name: { type: String, required: true, trim: true },
     code: { type: String, required: true, unique: true, uppercase: true, trim: true },
     description: { type: String, default: "" },
-    created_by: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    created_by: { type: mongoose.Schema.Types.ObjectId, ref: "QtUser" },
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );
 
-export default mongoose.models.Subject || mongoose.model("Subject", subjectSchema);
+export default mongoose.models.QtSubject || mongoose.model("QtSubject", subjectSchema);

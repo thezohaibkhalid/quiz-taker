@@ -8,11 +8,11 @@ version: "3.9"
 
 services:
   app:
-    image: ${IMAGE:-ghcr.io/your-org/quiz-system:staging}
+    image: ${IMAGE:-ghcr.io/thezohaibkhalid/quiz-taker:staging}
     container_name: quiz-system-staging
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "4500:3000"
     environment:
       NODE_ENV: production
       NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL}

@@ -43,4 +43,4 @@ userSchema.methods.toSafeJSON = function () {
   };
 };
 
-export default mongoose.models.User || mongoose.model("User", userSchema);
+export default mongoose.models.QtUser || mongoose.model("QtUser", userSchema);

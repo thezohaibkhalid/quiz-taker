@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const questionSchema = new mongoose.Schema(
   {
-    quiz_id: { type: mongoose.Schema.Types.ObjectId, ref: "Quiz", required: true, index: true },
+    quiz_id: { type: mongoose.Schema.Types.ObjectId, ref: "QtQuiz", required: true, index: true },
     question_text: { type: String, required: true },
     type: {
       type: String,
@@ -31,4 +31,4 @@ questionSchema.methods.toStudentJSON = function () {
   };
 };
 
-export default mongoose.models.Question || mongoose.model("Question", questionSchema);
+export default mongoose.models.QtQuestion || mongoose.model("QtQuestion", questionSchema);

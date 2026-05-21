@@ -112,6 +112,13 @@ jobs:
             git checkout staging
             git pull origin staging
 
+            # Materialize .env.staging from the single blob secret.
+            # Quoted heredoc delimiter prevents the VM shell from expanding $VAR inside the secret.
+            cat > .env.staging <<'STAGING_ENV_EOF'
+            ${{ secrets.STAGING_ENV_BLOB }}
+            STAGING_ENV_EOF
+            chmod 600 .env.staging
+
             # Pull image and bring stack up
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
             export IMAGE="${{ needs.test-and-build.outputs.image_tag }}"
@@ -121,7 +128,7 @@ jobs:
             # Wait + healthcheck
             sleep 10
             for i in 1 2 3 4 5; do
-              if curl -fsS http://localhost:3000/api/health > /dev/null; then
+              if curl -fsS http://localhost:4500/api/health > /dev/null; then
                 echo "Healthy ✅"
                 exit 0
               fi
