@@ -33,7 +33,7 @@ function Header() {
     <header className="border-b border-ink-100 bg-cream-50/80 backdrop-blur sticky top-0 z-30">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-ink-900 flex items-center justify-center text-white font-bold shadow-soft">Q</div>
+          <img src="/logo.png" alt="Logo" className="w-8 h-8 object-contain rounded-md" />
           <span className="font-semibold text-ink-900">Quiz System</span>
         </Link>
         <nav className="flex items-center gap-2">
@@ -197,7 +197,7 @@ function DashboardPreview() {
             {/* sidebar */}
             <div className="col-span-3 border-r border-ink-100 p-4 bg-cream-50">
               <div className="flex items-center gap-2 mb-5">
-                <div className="w-7 h-7 rounded-lg bg-ink-900"></div>
+                <img src="/logo.png" alt="Logo" className="w-7 h-7 object-contain rounded-md" />
                 <span className="font-semibold text-ink-900 text-sm">Quiz System</span>
               </div>
               {["Dashboard", "My Quizzes", "Submissions", "Analytics", "Subjects"].map((t, i) => (
