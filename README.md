@@ -140,7 +140,6 @@ You do **not** need to create `.env.staging` on the VM — the pipeline writes i
 | `STAGING_USER`        | SSH user (e.g. `ubuntu`)                                                    |
 | `STAGING_SSH_KEY`     | Private key (PEM) for SSH                                                   |
 | `STAGING_SSH_PORT`    | Optional, defaults to 22                                                    |
-| `STAGING_APP_URL`     | Public URL (e.g. `http://<vm-ip>:3000`)                                     |
 | `STAGING_ENV_BLOB`    | Full contents of `.env.staging` pasted as one multi-line secret value       |
 
 ### Pipeline behavior

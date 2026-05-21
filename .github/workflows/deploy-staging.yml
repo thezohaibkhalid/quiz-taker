@@ -52,7 +52,7 @@ jobs:
         run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
-          NEXT_PUBLIC_APP_URL: ${{ secrets.STAGING_APP_URL }}
+          NEXT_PUBLIC_APP_URL: https://cloud.dukandar.app
           MONGODB_URI: "mongodb://placeholder-for-build/only"
           JWT_SECRET: "build-time-placeholder"
 
@@ -93,7 +93,7 @@ jobs:
     needs: test-and-build
     environment:
       name: staging
-      url: ${{ secrets.STAGING_APP_URL }}
+      url: https://cloud.dukandar.app
 
     steps:
       - name: SSH deploy
